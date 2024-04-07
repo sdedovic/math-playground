@@ -40,7 +40,7 @@ begin
 		elements = [v for v in 0:n-1]
 		print(buffer, "``\\mathbb{Z}_{", n, "}^+=\\{", join(elements, ","), "\\}``\n\n")
 		for a in elements
-			gen = [a*x % n for x in 1:n]
+			gen = [a*x % n for x in elements]
 			if test(elements, gen)
 				println(buffer, "\t", a, " is a generator ", "{", join(gen, ","), "}")
 			end
@@ -56,7 +56,7 @@ begin
 		elements = 1:n-1
 		println(b2, "``\\mathbb{Z}_{", n, "}^\\times=\\{", join(elements, ","), "\\}``\n\n")
 		for a in elements
-			gen = [a^x % n for x in 1:n]
+			gen = [a^x % n for x in elements]
 			if test(elements, gen)
 				println(b2, "\t", a, " is a generator ", gen)
 			end
@@ -72,7 +72,7 @@ begin
 		elements = unique([v for v in 1:n-1 if gcd(v, n) == 1])
 		println(b3, "``(\\mathbb{Z}/", n, "\\mathbb{Z})^\\times=\\{", join(elements, ","), "\\}`` \n\n")
 		for a in elements
-			gen = [a^x % n for x in 1:n]
+			gen = [a^x % n for x in 1:n-1]
 			if test(elements, gen)
 				println(b3, "\t", a, " is a generator ", "{", join(gen, ","), "}")
 			end
